@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace LibraryWebApp
 {
-    public partial class AdminLoginForm : System.Web.UI.Page
+    public partial class UserLoginForm : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -12,7 +12,8 @@ namespace LibraryWebApp
 
         protected void Login(object sender, EventArgs e)
         {
-            if (email.Text.Length <= 0 || !new Regex("^\\S+@\\S+\\.\\S+$").IsMatch(email.Text)) {
+            if (email.Text.Length <= 0 || !new Regex("^\\S+@\\S+\\.\\S+$").IsMatch(email.Text))
+            {
                 EmailErrorLabel.Text = "Invalid email. Please try again.";
                 PasswordErrorLabel.Text = "";
                 return;
@@ -20,14 +21,13 @@ namespace LibraryWebApp
 
             try
             {
-                Helpers.User.LoginLogic(email.Text, password.Text, true, true);
-            } catch (InvalidOperationException error)
+                Helpers.User.LoginLogic(email.Text, password.Text, true);
+            }
+            catch (InvalidOperationException error)
             {
                 EmailErrorLabel.Text = "";
                 PasswordErrorLabel.Text = error.Message;
             }
         }
-
-        
     }
 }
