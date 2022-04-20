@@ -63,7 +63,7 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="/AccountSettings">Account Settings</a>
-                    <asp:Button runat="server" class="dropdown-item" OnClick="Logout" Text="Logout"/>
+                    <asp:Button runat="server" class="dropdown-item" OnClick="Logout" Text="Logout" UseSubmitBehaviour="false" type="button"/>
                   </div>
                 </div>
             <%}

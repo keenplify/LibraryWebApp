@@ -11,17 +11,19 @@ namespace LibraryWebApp
     public partial class AdminBooks : System.Web.UI.Page
     {
         protected List<Dictionary<string, object>> BooksList = new List<Dictionary<string, object>>();
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Search(string keyword=null)
         {
-            //Check if logged in
-            if (Helpers.User.AutomaticLoginUserLogic("ADMIN", false, true) == null) Response.Redirect("/");
-
+            BooksList = new List<Dictionary<string, object>>();
             MySqlConnection Connection = Helpers.Database.Connect();
             string query = "SELECT * FROM books_tbl";
+
+            if (keyword != null) {
+                string lowerKeyword = keyword.ToLowerInvariant();
+                query += " WHERE lower(title) LIKE '%" + lowerKeyword + "%' OR lower(author) LIKE '%" + lowerKeyword + "%' OR lower(publisher) LIKE '%" + lowerKeyword + "%'";
+            }
             MySqlCommand cmd = new MySqlCommand(query, Connection);
 
             MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows != true) throw new InvalidOperationException("No user found!");
 
             while (reader.Read())
             {
@@ -30,12 +32,33 @@ namespace LibraryWebApp
                 {
                     dict.Add(reader.GetName(lp), reader.GetValue(lp));
                 }
-                foreach (var key in dict.Keys)
-                {
-                    System.Diagnostics.Debug.WriteLine(dict[key]);
-                }
+
                 BooksList.Add(dict);
             }
+            foreach (Dictionary<string, object> dict in BooksList)
+            {
+                Connection.Close();
+                Connection = Helpers.Database.Connect();
+                string transactionsActiveQuery = "SELECT count(*) FROM transactions_tbl WHERE state='BORROWED' AND book_id=" + dict["id"];
+
+                MySqlCommand transactionsActiveCmd = new MySqlCommand(transactionsActiveQuery, Connection);
+                Int32 transactionsActiveCount = Convert.ToInt32(transactionsActiveCmd.ExecuteScalar());
+                dict.Add("transactionsActiveCount", transactionsActiveCount);
+                dict.Add("availableStocks", Convert.ToInt32(dict["stock"]) - transactionsActiveCount);
+            }
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //Check if logged in
+            if (Helpers.User.AutomaticLoginUserLogic("ADMIN", false, true) == null) Response.Redirect("/");
+
+            Search();
+        }
+
+        protected void SearchClick(object sender, EventArgs e)
+        {
+            if (SearchKeyword.Text.Length > 0)
+                Search(SearchKeyword.Text);
         }
     }
 }

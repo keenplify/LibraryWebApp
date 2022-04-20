@@ -36,8 +36,11 @@
                 <div class="d-md-flex">
                     <h1 class="mr-auto text-center">Books</h1>
                     <div class="form-inline">
-                        <asp:TextBox runat="server" ID="SearchKeyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <asp:Button runat="server" class="btn btn-outline-success my-2 my-sm-0" type="submit" Text="Search" />
+                        <asp:Panel ID="pnlSearch" runat="server" DefaultButton="SearchBtn">
+                            <asp:TextBox runat="server" ID="SearchKeyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                            <asp:Button ID="SearchBtn" type="submit" runat="server" class="btn btn-outline-success my-2 my-sm-0" Text="Search" OnClick="SearchClick" />
+                        </asp:Panel>
+                        <a href="AdminAddBook" class="btn btn-outline-primary ml-2"><i data-feather="plus"></i>Add Book</a>
                     </div>
                 </div>
                 <div class="card-columns">
@@ -47,14 +50,12 @@
                         <div class="card">
                         <img class="card-img-top book-image" src="<%=Book["cover_image_location"] %>" />
                         <div class="card-body">
-                            <h5 class="card-title"><%=Book["title"] %></h5>
+                            <h5 class="card-title font-weight-bold"><%=Book["title"] %></h5>
                             <p class="card-text">
-                                Authored by <b><%=Book["author"] %> <br /></b>
-                                Published by <b><%=Book["publisher"] %> <br /></b>
-                                Stocks Available: <b><%=Book["stock"] %>
-                                <% if ((int)Book["stock"] <= 5) { %>
+                                Borrowed: <b class="font-weight-bold"><%=Book["transactionsActiveCount"] %></b> <br />
+                                Available Stocks: <b class="font-weight-bold"><%=Book["availableStocks"] %></b> <% if ((int)Book["availableStocks"] != (int)Book["stock"] && (int)Book["availableStocks"] <= 2) { %>
                                     <span class="badge badge-danger">LOW STOCK</span>
-                                <%} %></b>
+                                <%} %>
                             </p>
                         </div>
                     </div>

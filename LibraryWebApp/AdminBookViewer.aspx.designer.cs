@@ -11,34 +11,52 @@ namespace LibraryWebApp
 {
 
 
-    public partial class AdminBooks
+    public partial class AdminBookViewer
     {
 
         /// <summary>
-        /// pnlSearch control.
+        /// pnlUpdateBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSearch;
+        protected global::System.Web.UI.WebControls.Panel pnlUpdateBook;
 
         /// <summary>
-        /// SearchKeyword control.
+        /// Publisher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SearchKeyword;
+        protected global::System.Web.UI.WebControls.TextBox Publisher;
 
         /// <summary>
-        /// SearchBtn control.
+        /// Author control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchBtn;
+        protected global::System.Web.UI.WebControls.TextBox Author;
+
+        /// <summary>
+        /// Stock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Stock;
+
+        /// <summary>
+        /// UpdateBookBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UpdateBookBtn;
     }
 }
