@@ -11,7 +11,7 @@ namespace LibraryWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Helpers.User.AutomaticLoginUserLogic("ADMIN");
+            if (Helpers.User.AutomaticLoginUserLogic("ADMIN", false, true) == null) Response.Redirect("/");
         }
     }
 }

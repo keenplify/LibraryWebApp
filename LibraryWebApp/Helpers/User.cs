@@ -7,11 +7,11 @@ namespace LibraryWebApp.Helpers
 {
     public class User
     {
-        public static void LogoutLogic()
+        public static void LogoutLogic(bool redirect=false)
         {
             Cookie.RemoveCookie("user", "email", null);
             Cookie.RemoveCookie("user", "password", null);
-            HttpContext.Current.Response.Redirect("~/");
+            if (redirect) HttpContext.Current.Response.Redirect("~/");
         }
         public static MySqlDataReader LoginLogic(string email, string password, bool redirect = false, bool isAdmin = false)
         {
@@ -93,7 +93,7 @@ namespace LibraryWebApp.Helpers
                 System.Diagnostics.Debug.WriteLine("Something went wrong while trying to add a user.");
             }
         }
-        public static void AutomaticLoginUserLogic(string _type="", bool redirect = false)
+        public static Dictionary<string, object> AutomaticLoginUserLogic(string _type="", bool redirect = false, bool returnReader = false)
         {
             if (Cookie.CookieExist("user", "email") && Cookie.CookieExist("user", "password"))
             {
@@ -101,11 +101,22 @@ namespace LibraryWebApp.Helpers
                 {
                     MySqlDataReader reader = LoginLogic(Cookie.GetFromCookie("user", "email"), Cookie.GetFromCookie("user", "password"));
                     string type = reader.GetString("type");
-                    if (type == "") return;
+                    if (type == "") return null;
 
                     if (type != _type)
                     {
                         throw new InvalidOperationException();
+                    }
+                    
+                    if (returnReader)
+                    {
+                        Dictionary<string, object> dict = new Dictionary<string, object>();
+                        for (int lp = 0; lp < reader.FieldCount; lp++)
+                        {
+                            dict.Add(reader.GetName(lp), reader.GetValue(lp));
+                        }
+
+                        return dict;
                     }
 
                     if (redirect)
@@ -116,15 +127,10 @@ namespace LibraryWebApp.Helpers
                 }
                 catch (InvalidOperationException e)
                 {
-                    LogoutLogic();
-                }
-            } else
-            {
-                if (!redirect)
-                {
-                    LogoutLogic();
+                    if (redirect) LogoutLogic();
                 }
             }
+            return null;
         }
     }
 }
