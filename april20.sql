@@ -12,19 +12,89 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping data for table library_db.books_tbl: ~3 rows (approximately)
+
+-- Dumping database structure for library_db
+DROP DATABASE IF EXISTS `library_db`;
+CREATE DATABASE IF NOT EXISTS `library_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `library_db`;
+
+-- Dumping structure for table library_db.books_tbl
+DROP TABLE IF EXISTS `books_tbl`;
+CREATE TABLE IF NOT EXISTS `books_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_by` bigint(20) NOT NULL DEFAULT 0,
+  `title` varchar(50) NOT NULL,
+  `publisher` varchar(255) NOT NULL DEFAULT '0',
+  `author` varchar(255) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `cover_image_location` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Book_Created_By_FK` (`created_by`),
+  CONSTRAINT `Book_Created_By_FK` FOREIGN KEY (`created_by`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table library_db.books_tbl: ~1 rows (approximately)
 /*!40000 ALTER TABLE `books_tbl` DISABLE KEYS */;
 REPLACE INTO `books_tbl` (`id`, `created_by`, `title`, `publisher`, `author`, `stock`, `cover_image_location`) VALUES
 	(2, 1, 'Genki 1', 'Eri Banno, Yoko Ikeda, Yukata Ohno', 'Eri Banno, Yoko Ikeda, Yukata Ohno', 9, '/public/genki1.jpg');
 /*!40000 ALTER TABLE `books_tbl` ENABLE KEYS */;
 
+-- Dumping structure for table library_db.penalties_tbl
+DROP TABLE IF EXISTS `penalties_tbl`;
+CREATE TABLE IF NOT EXISTS `penalties_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_by` bigint(20) DEFAULT NULL,
+  `description` varchar(50) NOT NULL,
+  `punished_id` bigint(20) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `Penalty_Created_By_FK` (`created_by`),
+  KEY `Penalty_Punished_FK` (`punished_id`),
+  CONSTRAINT `Penalty_Created_By_FK` FOREIGN KEY (`created_by`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Penalty_Punished_FK` FOREIGN KEY (`punished_id`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- Dumping data for table library_db.penalties_tbl: ~0 rows (approximately)
 /*!40000 ALTER TABLE `penalties_tbl` DISABLE KEYS */;
 /*!40000 ALTER TABLE `penalties_tbl` ENABLE KEYS */;
 
--- Dumping data for table library_db.transactions_tbl: ~1 rows (approximately)
+-- Dumping structure for table library_db.transactions_tbl
+DROP TABLE IF EXISTS `transactions_tbl`;
+CREATE TABLE IF NOT EXISTS `transactions_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_by` bigint(20) NOT NULL,
+  `date_borrowed` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `state` enum('RETURNED','BORROWED') NOT NULL DEFAULT 'BORROWED',
+  `book_id` bigint(20) NOT NULL,
+  `date_of_return` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `Book_FK` (`book_id`),
+  KEY `Transaction_Created_By_FK` (`created_by`),
+  CONSTRAINT `Book_FK` FOREIGN KEY (`book_id`) REFERENCES `books_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Transaction_Created_By_FK` FOREIGN KEY (`created_by`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table library_db.transactions_tbl: ~0 rows (approximately)
 /*!40000 ALTER TABLE `transactions_tbl` DISABLE KEYS */;
 /*!40000 ALTER TABLE `transactions_tbl` ENABLE KEYS */;
+
+-- Dumping structure for table library_db.users_tbl
+DROP TABLE IF EXISTS `users_tbl`;
+CREATE TABLE IF NOT EXISTS `users_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `birthday` date NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `type` enum('ADMIN','USER') NOT NULL DEFAULT 'USER',
+  `gender` enum('MALE','FEMALE') NOT NULL,
+  `section` varchar(50) DEFAULT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone_number` varchar(50) NOT NULL,
+  `guardian_phone_number` varchar(50) DEFAULT NULL,
+  `school_id_image_location` varchar(255) DEFAULT NULL,
+  `password` varchar(72) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table library_db.users_tbl: ~3 rows (approximately)
 /*!40000 ALTER TABLE `users_tbl` DISABLE KEYS */;
