@@ -270,8 +270,11 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="UserBooks.aspx" />
+    <Content Include="UserBookViewer.aspx" />
     <Content Include="UserDashboard.aspx" />
     <Content Include="UserLoginForm.aspx" />
+    <Content Include="UserTransactions.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -327,6 +330,7 @@
     </Compile>
     <Compile Include="Helpers\Connection.cs" />
     <Compile Include="Helpers\Cookie.cs" />
+    <Compile Include="Helpers\Time.cs" />
     <Compile Include="Helpers\Upload.cs" />
     <Compile Include="Helpers\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -351,6 +355,20 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="UserBooks.aspx.cs">
+      <DependentUpon>UserBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserBooks.aspx.designer.cs">
+      <DependentUpon>UserBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserBookViewer.aspx.cs">
+      <DependentUpon>UserBookViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserBookViewer.aspx.designer.cs">
+      <DependentUpon>UserBookViewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserDashboard.aspx.cs">
       <DependentUpon>UserDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -364,6 +382,13 @@
     </Compile>
     <Compile Include="UserLoginForm.aspx.designer.cs">
       <DependentUpon>UserLoginForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserTransactions.aspx.cs">
+      <DependentUpon>UserTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserTransactions.aspx.designer.cs">
+      <DependentUpon>UserTransactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -12,7 +12,10 @@
                     </div>
                     <asp:TextBox runat="server" type="email" ID="email" class="form-control" placeholder="Email" />
                 </div>
+               <%if (EmailErrorLabel.Text.Length > 0)
+                    {%>
                 <small class="form-text text-danger"><asp:Label runat="server" ID="EmailErrorLabel"/></small>
+                <%}%>
             </div>
             <div class="mb-3">
                 <div class="input-group d-flex justify-content-center">
@@ -21,7 +24,10 @@
                     </div>
                     <asp:TextBox runat="server" type="password" ID="password" class="form-control" placeholder="Password" />
                 </div>
+                <%if (PasswordErrorLabel.Text.Length > 0)
+                    {%>
                 <small class="form-text text-danger"><asp:Label runat="server" ID="PasswordErrorLabel"/></small>
+                <%}%>
             </div>
             <asp:Button runat="server" text="Login" CssClass="btn btn-primary w-100" OnClick="Login"/>
         </div>

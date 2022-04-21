@@ -279,3 +279,8 @@ a.article, a.article:hover {
         display: none;
     }
 }
+
+
+.transaction-cover-td {
+    width: 128px;
+}
