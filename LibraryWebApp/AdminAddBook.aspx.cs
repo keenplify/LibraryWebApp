@@ -28,12 +28,11 @@ namespace LibraryWebApp
                     "'" + Author.Text + "'," +
                     "'" + Stock.Text + "'," +
                     ");";
-            System.Diagnostics.Debug.WriteLine(query);
             MySqlConnection Connection = Helpers.Database.Connect();
             MySqlCommand cmd = new MySqlCommand(query, Connection);
 
             cmd.ExecuteNonQuery();
-            HttpContext.Current.Response.Redirect("~/UserLoginForm");
+            HttpContext.Current.Response.Redirect("~/AdminBooks");
         }
     }
 }
