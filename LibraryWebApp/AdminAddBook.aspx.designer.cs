@@ -33,13 +33,13 @@ namespace LibraryWebApp
         protected global::System.Web.UI.WebControls.FileUpload Cover;
 
         /// <summary>
-        /// Title control.
+        /// BookTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Title;
+        protected global::System.Web.UI.WebControls.TextBox BookTitle;
 
         /// <summary>
         /// Publisher control.

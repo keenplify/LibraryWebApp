@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="Add Book"  Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="AdminAddBook.aspx.cs" Inherits="LibraryWebApp.AdminAddBook" %>
 
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="wrapper">
             <nav id="sidebar">
@@ -43,8 +42,8 @@
                                 <asp:FileUpload runat="server" ID="Cover" required="true" /> 
                             </div>
                             <div class="col-md-12 my-2">
-                                <label for="Title" class="form-label">Book Title</label>
-                                <asp:TextBox runat="server" ID="Title" TextMode="MultiLine" class="form-control" title="Title" required="true"/>
+                                <label for="BookTitle" class="form-label">Book Title</label>
+                                <asp:TextBox runat="server" ID="BookTitle" TextMode="MultiLine" class="form-control" required="true"/>
                             </div>
                             <div class="col-md-12 my-2">
                                 <label for="Publisher" class="form-label">Publisher</label>
@@ -59,7 +58,7 @@
                                 <asp:TextBox runat="server" ID="Stock" type="number" class="form-control" title="Stock" required="true"/>
                             </div>
                         </div>
-                        <asp:Button ID="AddBookBtn" type="submit" runat="server" class="btn btn-success w-50" Text="Add Book" OnClick="Add_Book" />
+                        <asp:Button ID="AddBookBtn" type="submit" runat="server" class="btn btn-success" Text="Add Book" OnClick="Add_Book" />
                     </asp:Panel>
             </div>
         </div>
