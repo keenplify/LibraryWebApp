@@ -6,10 +6,10 @@
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 50px)">
         <div class="d-flex flex-column justify-content-center align-items-center">
             <h1>Register User</h1>
-            <% if (Error.Text.Length>0)
+            <% if (ErrorStr.Text.Length>0)
                 { %>
                <div class="alert alert-danger" role="alert">
-                  <asp:Label runat="server" ID="Error"/> 
+                  <asp:Label runat="server" ID="ErrorStr"/> 
                </div>
             <% } %>
             <div class="row mt-3">

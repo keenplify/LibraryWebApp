@@ -17,6 +17,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/AdminReturnBookForm">
+                            <i data-feather="corner-down-left"></i>
+                            Return Book
+                        </a>
+                    </li>
+                    <li>
                         <a href="/AdminTransactions">
                             <i data-feather="list"></i>
                             Transactions

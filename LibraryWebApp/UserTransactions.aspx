@@ -37,7 +37,7 @@
                 <div class="form-inline">
                     <asp:Panel ID="pnlSearch" runat="server" DefaultButton="SearchBtn">
                         <asp:TextBox runat="server" ID="SearchKeyword" class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" />
-                        <asp:Button ID="SearchBtn" type="submit" runat="server" class="btn btn-outline-success my-2 my-sm-0" Text="Search" />
+                        <asp:Button ID="SearchBtn" type="submit" runat="server" class="btn btn-outline-success my-2 my-sm-0" Text="Search" OnClick="SearchBtn_Click" />
                     </asp:Panel>
                 </div>
                 

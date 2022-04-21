@@ -11,10 +11,16 @@
                             Home
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/AdminBooks">
                             <i data-feather="book"></i>
                             Books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/AdminReturnBookForm" class="active">
+                            <i data-feather="corner-down-left"></i>
+                            Return Book
                         </a>
                     </li>
                     <li>
