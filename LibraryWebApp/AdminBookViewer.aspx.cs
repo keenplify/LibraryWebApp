@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
@@ -16,6 +15,9 @@ namespace LibraryWebApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Check if logged in
+            if (Helpers.User.AutomaticLoginUserLogic("ADMIN", false, true) == null) Response.Redirect("/");
+
             id = Request.QueryString["id"];
 
             MySqlConnection Connection = Helpers.Database.Connect();
@@ -36,6 +38,7 @@ namespace LibraryWebApp
                 bookFound = true;
                 Publisher.Text = (string)Book["publisher"];
                 Author.Text = (string)Book["author"];
+                CoverPhoto.ImageUrl = (string)Book["cover_image_location"];
                 Stock.Text = Book["stock"].ToString();
                 Page.Title = Book["title"] + " - Library System";
             }
@@ -57,6 +60,22 @@ namespace LibraryWebApp
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
             Response.Redirect("AdminBooks");
+        }
+
+        protected void UpdateImageBtn_Click(object sender, EventArgs e)
+        {
+            if (UpdateCover.HasFile)
+            {
+                string fileName = "book-cover-" + new Random().Next(0, 100000) + "-" + Path.GetFileName(UpdateCover.PostedFile.FileName);
+                string path = "/public/" + fileName;
+                UpdateCover.PostedFile.SaveAs(Server.MapPath("~/public/") + fileName);
+
+                MySqlConnection connection = Helpers.Database.Connect();
+                string query = "UPDATE books_tbl SET cover_image_location='" + path.Replace(@"\", @"\\") + "' WHERE id=" + id;
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                Response.Redirect("AdminBooks");
+            }
         }
     }
 }

@@ -40,7 +40,7 @@
                             <asp:TextBox runat="server" ID="SearchKeyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                             <asp:Button ID="SearchBtn" type="submit" runat="server" class="btn btn-outline-success my-2 my-sm-0" Text="Search" OnClick="SearchClick" />
                         </asp:Panel>
-                        <a href="AdminAddBook" class="btn btn-outline-primary ml-2"><i data-feather="plus"></i>Add Book</a>
+                        <a href="AdminAddBook" class="btn btn-primary ml-2"><i data-feather="plus"></i>Add Book</a>
                     </div>
                 </div>
                 <div class="card-columns">

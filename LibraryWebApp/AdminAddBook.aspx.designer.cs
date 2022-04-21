@@ -11,53 +11,35 @@ namespace LibraryWebApp
 {
 
 
-    public partial class AdminBookViewer
+    public partial class AdminAddBook
     {
 
         /// <summary>
-        /// pnlUpdateImage control.
+        /// pnlAddBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUpdateImage;
+        protected global::System.Web.UI.WebControls.Panel pnlAddBook;
 
         /// <summary>
-        /// CoverPhoto control.
+        /// Cover control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image CoverPhoto;
+        protected global::System.Web.UI.WebControls.FileUpload Cover;
 
         /// <summary>
-        /// UpdateCover control.
+        /// Title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UpdateCover;
-
-        /// <summary>
-        /// UpdateImageBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdateImageBtn;
-
-        /// <summary>
-        /// pnlUpdateBook control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlUpdateBook;
+        protected global::System.Web.UI.WebControls.TextBox Title;
 
         /// <summary>
         /// Publisher control.
@@ -87,12 +69,12 @@ namespace LibraryWebApp
         protected global::System.Web.UI.WebControls.TextBox Stock;
 
         /// <summary>
-        /// UpdateBookBtn control.
+        /// AddBookBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdateBookBtn;
+        protected global::System.Web.UI.WebControls.Button AddBookBtn;
     }
 }

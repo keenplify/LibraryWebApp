@@ -47,7 +47,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="rounded img-fluid" src="<%=Book["cover_image_location"] %>" />
+                            <asp:Panel ID="pnlUpdateImage" runat="server" DefaultButton="UpdateImageBtn">
+                                <asp:Image runat="server" ID="CoverPhoto" class="rounded img-fluid" />
+                                <div>
+                                    <label for="UpdateCover" class="form-label">Update Cover Photo</label>
+                                    <asp:FileUpload runat="server" ID="UpdateCover" /> 
+                                    <asp:Button ID="UpdateImageBtn" type="submit" runat="server" class="btn btn-success mt-2" Text="Update Cover Photo" OnClick="UpdateImageBtn_Click" />
+                                </div>
+                            </asp:Panel>
                         </div>
                         <div class="col-md-offset-1 col-md-6">
                             <asp:Panel ID="pnlUpdateBook" runat="server" DefaultButton="UpdateBookBtn">

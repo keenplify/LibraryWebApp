@@ -124,6 +124,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminAddBook.aspx" />
     <Content Include="AdminBooks.aspx" />
     <Content Include="AdminBookViewer.aspx" />
     <Content Include="AdminDashboard.aspx" />
@@ -277,6 +278,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAddBook.aspx.cs">
+      <DependentUpon>AdminAddBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAddBook.aspx.designer.cs">
+      <DependentUpon>AdminAddBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminBooks.aspx.cs">
       <DependentUpon>AdminBooks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
