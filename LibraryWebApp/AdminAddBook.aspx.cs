@@ -41,7 +41,6 @@ namespace LibraryWebApp
                     "'" + Stock.Text + "'," +
                     "'" + path.Replace(@"\", @"\\") + "'" +
                     ");";
-            System.Diagnostics.Debug.WriteLine(query);
 
             MySqlConnection Connection = Helpers.Database.Connect();
             MySqlCommand cmd = new MySqlCommand(query, Connection);
