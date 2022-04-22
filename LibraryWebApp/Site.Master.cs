@@ -8,19 +8,31 @@ namespace LibraryWebApp
 {
     public partial class SiteMaster : MasterPage
     {
+        protected string homeHREF = "#";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Helpers.Cookie.CookieExist("user", "email") && Helpers.Cookie.CookieExist("user", "password"))
             {
-                MySqlDataReader reader = Helpers.User.LoginLogic(Helpers.Cookie.GetFromCookie("user", "email"), Helpers.Cookie.GetFromCookie("user", "password"));
-                Dictionary<string, object> dict = new Dictionary<string, object>();
-                for (int lp = 0; lp < reader.FieldCount; lp++)
+                try
                 {
-                    dict.Add(reader.GetName(lp), reader.GetValue(lp));
-                }
+                    MySqlDataReader reader = Helpers.User.LoginLogic(Helpers.Cookie.GetFromCookie("user", "email"), Helpers.Cookie.GetFromCookie("user", "password"));
 
-                if (dict == null) return;
-                UserFullName.Text = dict["first_name"].ToString() + " " + dict["last_name"].ToString();
+                    if (reader == null) return;
+                    
+                    Dictionary<string, object> dict = new Dictionary<string, object>();
+                    for (int lp = 0; lp < reader.FieldCount; lp++)
+                    {
+                        dict.Add(reader.GetName(lp), reader.GetValue(lp));
+                    }
+
+                    if (dict == null) return;
+                    UserFullName.Text = dict["first_name"].ToString() + " " + dict["last_name"].ToString();
+                    homeHREF = dict["type"].ToString() == "ADMIN" ? "/AdminDashboard" : "/UserDashboard";
+                }
+                catch (Exception err)
+                {
+                    System.Diagnostics.Debug.WriteLine(err);
+                }
             }
         }
     protected void Logout(object sender, EventArgs e)

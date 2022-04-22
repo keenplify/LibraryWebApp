@@ -35,7 +35,7 @@ namespace LibraryWebApp.Helpers
                     { "password", password }
                 };
 
-                Helpers.Cookie.StoreInCookieDictionary("user", null, userdata, null);
+                Cookie.StoreInCookieDictionary("user", null, userdata, null);
                 if (redirect)
                 {
                     if (reader.GetString("type") == "ADMIN") HttpContext.Current.Response.Redirect("~/AdminDashboard");
@@ -45,7 +45,7 @@ namespace LibraryWebApp.Helpers
             }
             else
             {
-                throw new InvalidOperationException("Wrong or invalid password. Please try again.");
+                return null;
             }
         }
 
@@ -100,14 +100,18 @@ namespace LibraryWebApp.Helpers
                 try
                 {
                     MySqlDataReader reader = LoginLogic(Cookie.GetFromCookie("user", "email"), Cookie.GetFromCookie("user", "password"));
+
+                    if (reader == null) return null;
+
                     string type = reader.GetString("type");
                     if (type == "") return null;
 
-                    if (type != _type)
+                    if (_type != "" && type != _type)
                     {
                         throw new InvalidOperationException();
                     }
-                    
+
+
                     if (returnReader)
                     {
                         Dictionary<string, object> dict = new Dictionary<string, object>();
@@ -127,7 +131,8 @@ namespace LibraryWebApp.Helpers
                 }
                 catch (InvalidOperationException e)
                 {
-                    if (redirect) LogoutLogic();
+                    if (redirect) LogoutLogic(false);
+                    return null;
                 }
             }
             return null;

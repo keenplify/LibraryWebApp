@@ -11,8 +11,17 @@ namespace LibraryWebApp
 {
 
 
-    public partial class RegisterForm
+    public partial class AccountSettings
     {
+
+        /// <summary>
+        /// pnlUpdateAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlUpdateAccount;
 
         /// <summary>
         /// ErrorStr control.
@@ -96,15 +105,6 @@ namespace LibraryWebApp
         protected global::System.Web.UI.WebControls.TextBox email;
 
         /// <summary>
-        /// password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
-
-        /// <summary>
         /// Gender control.
         /// </summary>
         /// <remarks>
@@ -114,12 +114,57 @@ namespace LibraryWebApp
         protected global::System.Web.UI.WebControls.RadioButtonList Gender;
 
         /// <summary>
-        /// SchoolIdImage control.
+        /// UpdateDetailsBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload SchoolIdImage;
+        protected global::System.Web.UI.WebControls.Button UpdateDetailsBtn;
+
+        /// <summary>
+        /// pnlUpdatePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlUpdatePassword;
+
+        /// <summary>
+        /// NewPasswordError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NewPasswordError;
+
+        /// <summary>
+        /// NewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NewPassword;
+
+        /// <summary>
+        /// NewPasswordConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NewPasswordConfirm;
+
+        /// <summary>
+        /// UpdatePasswordBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UpdatePasswordBtn;
     }
 }

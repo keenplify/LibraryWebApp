@@ -13,8 +13,9 @@
                </div>
             <% } %>
             <div class="row mt-3">
-                <div class="col-md-6 px-1">
+                <div class="col-md-6 px-4">
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Name:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="user"></i></span>
@@ -24,6 +25,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Birthday:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="calendar"></i></span>
@@ -32,6 +34,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Section:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="info"></i></span>
@@ -40,6 +43,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Address:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="map-pin"></i></span>
@@ -48,8 +52,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 px-1">
+                <div class="col-md-6  px-4">
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Phone Number:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="phone"></i></span>
@@ -58,6 +63,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Guardian's Phone Number:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="phone"></i></span>
@@ -66,6 +72,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Email:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="mail"></i></span>
@@ -74,6 +81,7 @@
                         </div>
                     </div>
                     <div class="mb-2">
+                        <span for="Gender" class="font-weight-bold form-label">Password:</span>
                         <div class="input-group d-flex justify-content-center">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i data-feather="key"></i></span>
@@ -83,10 +91,10 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-2 row">
+            <div class="mb-2 row w-100">
                 <div class="col-md-6">
                     <span for="Gender" class="font-weight-bold form-label">Gender:</span>
-                    <asp:RadioButtonList ID="Gender" runat="server" required="true">
+                    <asp:RadioButtonList ID="Gender" runat="server" required="true" CssClass="mx-5">
                         <asp:ListItem Value="MALE">Male</asp:ListItem>
                         <asp:ListItem Value="FEMALE">Female</asp:ListItem>
                     </asp:RadioButtonList>
