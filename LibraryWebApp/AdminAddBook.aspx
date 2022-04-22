@@ -23,12 +23,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/AdminTransactions">
-                            <i data-feather="list"></i>
-                            Transactions
-                        </a>
-                    </li>
-                    <li>
                         <a href="/AdminPenalties">
                             <i data-feather="alert-triangle"></i>
                             Penalties
