@@ -69,6 +69,7 @@ namespace LibraryWebApp
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
 
+            Helpers.User.LogoutLogic(true);
             Response.Redirect("/");
         }
     }
