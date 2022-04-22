@@ -41,7 +41,7 @@
                     </asp:Panel>
                 </div>
                 
-                <table class="table table-striped w-100 ">
+                <table class="table table-striped w-100 my-2">
                     <thead>
                         <tr>
                             <th scope="col">Book Cover</th>

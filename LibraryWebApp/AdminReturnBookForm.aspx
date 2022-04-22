@@ -97,8 +97,8 @@
                                 </div>
                                 <%} %>
                                 <label for="Description">Add Penalty Description</label>
-                                <asp:TextBox runat="server" TextMode="MultiLine" ID="Description" name="Description" CssClass="form-control"/>
-                                <small class="form-text text-muted">Please type the reason for a custom penalty.</small>
+                                <asp:TextBox runat="server" TextMode="MultiLine" ID="Description" name="Description" CssClass="form-control" required="true"/>
+                                <small class="form-text text-muted">Please insert the reason for a penalty.</small>
                             </div>
                             <%} %>
                             

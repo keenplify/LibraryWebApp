@@ -39,26 +39,46 @@
                     <hr>
                     <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
                 </div>
-                <h2>Your Penalties</h2>
+                <div class="d-md-flex">
+                    <h2>Your Penalties</h2>
+                    <div class="ml-auto">
+                        <b>Active Penalties:</b> <h2><%=activePenalties %></h2>
+                    </div>
+                </div>
                 <div class="form-inline">
                     <asp:Panel ID="pnlSearch" runat="server" DefaultButton="SearchBtn">
                         <asp:TextBox runat="server" ID="SearchKeyword" class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" />
-                        <asp:Button ID="SearchBtn" type="submit" runat="server" class="btn btn-outline-success my-2 my-sm-0" Text="Search" />
+                        <asp:Button ID="SearchBtn" type="submit" runat="server" class="btn btn-outline-success my-2 my-sm-0" Text="Search" OnClick="SearchBtn_Click" />
                     </asp:Panel>
                 </div>
                 
-                <table class="table table-striped w-100 ">
+                <table class="table table-striped w-100 my-2">
                     <thead>
                         <tr>
-                            <th scope="col">Book Cover</th>
-                            <th scope="col">Book Name</th>
-                            <th scope="col">Day of Return</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Punisher</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Return Code</th>
                         </tr>
                     </thead>
                     <tbody>
-                     
+                        <%foreach (var Penalty in PenaltiesList)
+                            { %>
+                        <tr>
+                            <td><%=Penalty["description"] %></td>
+                            <td><%=Penalty["first_name"] %> <%=Penalty["last_name"] %></td>
+                            <td>
+                                <% if (Convert.ToInt32(Penalty["is_resolved"]) == 1)
+                                    {%>
+                                <div class="badge badge-success">Resolved</div>
+                                <%}
+                                    else
+                                    {%>
+                                <div class="badge badge-danger">Active</div>
+
+                                <%} %>
+                            </td>
+                        </tr>
+                        <%} %>
                     </tbody>
                 </table>
             </div>
