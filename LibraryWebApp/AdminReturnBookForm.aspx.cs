@@ -14,6 +14,7 @@ namespace LibraryWebApp
         protected Dictionary<string, object> Transaction = null;
         protected bool isOnError = false;
         protected bool isOnPenalty = false;
+        protected bool isOnLate = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,6 +50,15 @@ namespace LibraryWebApp
             if (Transaction==null)
             {
                 isOnError = true;
+                return;
+            }
+            DateTime dor = Convert.ToDateTime(Transaction["date_of_return"]);
+            if (DateTime.Now >= dor)
+            {
+                isOnLate = true;
+                isOnPenalty = true;
+                IncludePenaltyCheckbox.Checked = true;
+                Description.Text = "Returned the book " + Transaction["title"] + " late.";
             }
         }
 

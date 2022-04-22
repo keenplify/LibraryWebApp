@@ -275,11 +275,10 @@
     <Content Include="UserBookViewer.aspx" />
     <Content Include="UserDashboard.aspx" />
     <Content Include="UserLoginForm.aspx" />
+    <Content Include="UserPenalties.aspx" />
     <Content Include="UserTransactions.aspx" />
-    <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminAddBook.aspx.cs">
@@ -356,13 +355,6 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
     <Compile Include="UserBooks.aspx.cs">
       <DependentUpon>UserBooks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -391,19 +383,19 @@
     <Compile Include="UserLoginForm.aspx.designer.cs">
       <DependentUpon>UserLoginForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserPenalties.aspx.cs">
+      <DependentUpon>UserPenalties.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPenalties.aspx.designer.cs">
+      <DependentUpon>UserPenalties.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserTransactions.aspx.cs">
       <DependentUpon>UserTransactions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserTransactions.aspx.designer.cs">
       <DependentUpon>UserTransactions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.designer.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -90,6 +90,12 @@
                             <%if (isOnPenalty)
                                 { %>
                             <div class="form-group">
+                                <% if (isOnLate)
+                                    {%>
+                                <div class="alert alert-warning" role="alert">
+                                    We've detected that <b>this return is late</b> and have automatically set a penalty.
+                                </div>
+                                <%} %>
                                 <label for="Description">Add Penalty Description</label>
                                 <asp:TextBox runat="server" TextMode="MultiLine" ID="Description" name="Description" CssClass="form-control"/>
                                 <small class="form-text text-muted">Please type the reason for a custom penalty.</small>
