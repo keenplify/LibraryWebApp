@@ -21,7 +21,7 @@ namespace LibraryWebApp
 
             try
             {
-                Helpers.User.LoginLogic(email.Text, password.Text, true);
+                var reader = Helpers.User.LoginLogic(email.Text, password.Text, true);
 
                 if (reader == null)
                 {
