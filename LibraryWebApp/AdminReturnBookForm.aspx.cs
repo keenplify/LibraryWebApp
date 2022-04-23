@@ -78,7 +78,7 @@ namespace LibraryWebApp
             if (IncludePenaltyCheckbox.Checked)
             {
                 connection = Helpers.Database.Connect();
-                string query2 = "INSERT INTO penalties_tbl (created_by, description, punished_id) VALUES ('" + user["id"] + "','" + Description.Text + "', '" + Transaction["uid"] + "')";
+                string query2 = "INSERT INTO penalties_tbl (created_by, description, punished_id, punisher_id) VALUES ('" + user["id"] + "','" + Description.Text + "', '" + Transaction["uid"] + "', '"+ user["id"] +"')";
                 System.Diagnostics.Debug.WriteLine(query2);
                 MySqlCommand cmd2 = new MySqlCommand(query2, connection);
                 cmd2.ExecuteNonQuery();
