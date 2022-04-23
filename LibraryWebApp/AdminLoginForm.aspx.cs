@@ -20,7 +20,14 @@ namespace LibraryWebApp
 
             try
             {
-                Helpers.User.LoginLogic(email.Text, password.Text, true, true);
+                var reader = Helpers.User.LoginLogic(email.Text, password.Text, true, true);
+
+                if (reader == null)
+                {
+                    EmailErrorLabel.Text = "";
+                    PasswordErrorLabel.Text = "Invalid password. Please try again.";
+                    return;
+                }
             } catch (InvalidOperationException error)
             {
                 EmailErrorLabel.Text = "";
