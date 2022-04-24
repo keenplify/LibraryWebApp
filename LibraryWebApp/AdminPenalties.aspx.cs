@@ -29,7 +29,7 @@ namespace LibraryWebApp
             if (keyword != null)
             {
                 string lowerKeyword = keyword.ToLowerInvariant();
-                query += " AND lower(penalties_tbl.description) LIKE '%" + lowerKeyword + "%' OR lower(users_tbl.first_name) LIKE '%" + lowerKeyword + "%' OR lower(users_tbl.last_name) LIKE '%" + lowerKeyword + "%'";
+                query += " AND lower(penalties_tbl.description) LIKE '%" + lowerKeyword + "%' OR lower(users_tbl.first_name) LIKE '%" + lowerKeyword + "%' OR lower(users_tbl.last_name) LIKE '%" + lowerKeyword + "%'  OR lower(penalties_tbl.description) LIKE '%" + lowerKeyword + "%'";
             }
 
             query += " ORDER BY penalties_tbl.is_resolved ASC LIMIT 10";
