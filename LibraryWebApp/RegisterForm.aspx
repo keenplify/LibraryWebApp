@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Register User" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="RegisterForm.aspx.cs" Inherits="LibraryWebApp.RegisterForm" %>
+﻿<%@ Page Title="Register User" Language="C#" AutoEventWireup="true" MasterPageFile="~/SiteNoNav.Master" CodeBehind="RegisterForm.aspx.cs" Inherits="LibraryWebApp.RegisterForm" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">

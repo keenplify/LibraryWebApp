@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Admin Login" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="AdminLoginForm.aspx.cs" Inherits="LibraryWebApp.AdminLoginForm" %>
+﻿<%@ Page Title="Admin Login" Language="C#" AutoEventWireup="true" MasterPageFile="~/SiteNoNav.Master" CodeBehind="AdminLoginForm.aspx.cs" Inherits="LibraryWebApp.AdminLoginForm" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
