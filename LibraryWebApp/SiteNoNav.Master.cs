@@ -27,7 +27,6 @@ namespace LibraryWebApp
                     }
 
                     if (dict == null) return;
-                    UserFullName.Text = dict["first_name"].ToString() + " " + dict["last_name"].ToString();
                     homeHREF = dict["type"].ToString() == "ADMIN" ? "/AdminDashboard" : "/UserDashboard";
                 }
                 catch (Exception err)

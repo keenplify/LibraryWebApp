@@ -56,7 +56,8 @@
                 <table class="table table-striped w-100 my-2">
                     <thead>
                         <tr>
-                            <th scope="col">Description</th>
+                            <th scope="col">Punishment Description</th>
+                            <th scope="col">Remarks</th>
                             <th scope="col">Punished Student</th>
                             <th scope="col">Status</th>
                             <th scope="col">Change Status</th>
@@ -67,6 +68,7 @@
                             {%>
                         <tr>
                             <td><%=Penalty["description"] %></td>
+                            <td><%=Penalty["remarks"] %></td>
                             <td><%=Penalty["first_name"]  %> <%=Penalty["last_name"]  %></td>
                             <td>
                                 <% if (Convert.ToInt32(Penalty["is_resolved"]) == 1)

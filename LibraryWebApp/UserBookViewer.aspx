@@ -47,14 +47,19 @@
                     <div class="row">
                         <div class="col-md-4">
                             <img src="<%=Book["cover_image_location"] %>" class="rounded img-fluid" />
-                            <div class="d-flex flex-column">
-                                <label><b>Publisher:</b><br /><%=Book["publisher"] %></label>
-                                <label><b>Author:</b><br /><%=Book["author"] %></label>
-                                <label><b>Available Stocks:</b><br /><%=Book["availableStocks"] %></label>
-                            </div>
                         </div>
                         <div class="col-md-offset-1 col-md-6">
-                            
+                            <div class="d-flex flex-column">
+                                <label><b class="mr-2">Publisher:</b><%=Book["publisher"] %></label>
+                                <label><b class="mr-2">Publisher ID:</b><%=Book["publisher_id"] %></label>
+                                <label><b class="mr-2">Author:</b><%=Book["author"] %></label>
+                                <label><b class="mr-2">ISBN:</b><%=Book["isbn"] %></label>
+                                <label><b class="mr-2">Pages:</b><%=Book["pages"] %></label>
+                                <label><b class="mr-2">Book Type:</b><%=Book["book_type"] %></label>
+                                <label><b class="mr-2">Publishing Date:</b><%=Book["publishing_date"] %></label>
+
+                                <label><b class="mr-2">Available Stocks:</b><%=Book["availableStocks"] %></label>
+                            </div>
                         </div>
                     </div>
                 </div>

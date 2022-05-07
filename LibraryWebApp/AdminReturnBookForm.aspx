@@ -89,16 +89,26 @@
                             </div>
                             <%if (isOnPenalty)
                                 { %>
-                            <div class="form-group">
+                            <div>
                                 <% if (isOnLate)
                                     {%>
                                 <div class="alert alert-warning" role="alert">
-                                    We've detected that <b>this return is late</b> and have automatically set a penalty.
+                                    We've detected that <b>this return is late</b> and have automatically set a penalty remark.
                                 </div>
                                 <%} %>
-                                <label for="Description">Add Penalty Description</label>
-                                <asp:TextBox runat="server" TextMode="MultiLine" ID="Description" name="Description" CssClass="form-control" required="true"/>
-                                <small class="form-text text-muted">Please insert the reason for a penalty.</small>
+                                <div class="form-group">
+                                    <label for="Description">Add Penalty Description</label>
+                                    <asp:DropDownList runat="server" ID="DescriptionDdl">
+                                        <asp:ListItem Text="Penalty Description #1" Value="Penalty Description #1" />
+                                        <asp:ListItem Text="Penalty Description #2" Value="Penalty Description #2" />
+                                        <asp:ListItem Text="Penalty Description #3" Value="Penalty Description #3" />
+                                    </asp:DropDownList>
+                                    <small class="form-text text-muted">Please insert the reason for a penalty.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Description">Add Penalty Remarks</label>
+                                </div>
+                                <asp:TextBox runat="server" TextMode="MultiLine" ID="Remarks" name="Description" CssClass="form-control" required="true"/>
                             </div>
                             <%} %>
                             

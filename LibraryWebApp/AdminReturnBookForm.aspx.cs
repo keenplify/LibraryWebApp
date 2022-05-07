@@ -58,7 +58,7 @@ namespace LibraryWebApp
                 isOnLate = true;
                 isOnPenalty = true;
                 IncludePenaltyCheckbox.Checked = true;
-                Description.Text = "Returned the book " + Transaction["title"] + " late.";
+                Remarks.Text = "Returned the book " + Transaction["title"] + " late.";
             }
         }
 
@@ -78,7 +78,7 @@ namespace LibraryWebApp
             if (IncludePenaltyCheckbox.Checked)
             {
                 connection = Helpers.Database.Connect();
-                string query2 = "INSERT INTO penalties_tbl (created_by, description, punished_id, punisher_id) VALUES ('" + user["id"] + "','" + Description.Text + "', '" + Transaction["uid"] + "', '"+ user["id"] +"')";
+                string query2 = "INSERT INTO penalties_tbl (created_by, description, remarks, punished_id, punisher_id) VALUES ('" + user["id"] + "','" + DescriptionDdl.Text + "', '"+ Remarks.Text +"', '" + Transaction["uid"] + "', '"+ user["id"] +"')";
                 System.Diagnostics.Debug.WriteLine(query2);
                 MySqlCommand cmd2 = new MySqlCommand(query2, connection);
                 cmd2.ExecuteNonQuery();

@@ -41,13 +41,28 @@ namespace LibraryWebApp
                 CoverPhoto.ImageUrl = (string)Book["cover_image_location"];
                 Stock.Text = Book["stock"].ToString();
                 Page.Title = Book["title"] + " - Library System";
+                ISBN.Text = Book["isbn"].ToString();
+                PublisherID.Text = Book["publisher_id"].ToString();
+                Pages.Text = Book["pages"].GetType().ToString() == "System.DBNull" ? "0" : Book["pages"].ToString();
+                BookType.Text = Book["book_type"].ToString();
+                PublishingDate.Text = Book["publishing_date"].ToString();
+
             }
+            StockModTbx.Text = "1";
         }
 
         protected void Update_Book(object sender, EventArgs e)
         {
             MySqlConnection connection = Helpers.Database.Connect();
-            string query = "UPDATE books_tbl SET author='" + Author.Text + "', publisher='" + Author.Text + "', stock=" + Stock.Text + " WHERE id=" + id;
+            string query = "UPDATE books_tbl " +
+                "SET author='" + Author.Text + "', " +
+                "publisher='" + Author.Text + "', " +
+                "isbn='" + ISBN.Text + "', " +
+                $"publisher_id='{PublisherID.Text}', " +
+                $"pages='{Pages.Text}', " +
+                $"book_type='{BookType.Text}', " +
+                $"publishing_date='{PublishingDate.Text}' " +
+                "WHERE id=" + id;
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
             Response.Redirect("AdminBooks");
@@ -76,6 +91,16 @@ namespace LibraryWebApp
                 cmd.ExecuteNonQuery();
                 Response.Redirect("AdminBooks");
             }
+        }
+
+        protected void UpdateStockBtn_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = Helpers.Database.Connect();
+            string query = "UPDATE books_tbl SET stock=stock" + StockMode.Text + StockModTbx.Text + " WHERE id=" + id;
+            System.Diagnostics.Debug.WriteLine(query);
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+            Response.Redirect("AdminBooks");
         }
     }
 }
