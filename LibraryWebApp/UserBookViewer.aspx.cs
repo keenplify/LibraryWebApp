@@ -39,12 +39,6 @@ namespace LibraryWebApp
                     Book.Add(reader.GetName(lp), reader.GetValue(lp));
                 }
 
-                string dor = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
-                DateOfReturn.Text = dor;
-                DateOfReturn.Attributes["max"] = dor;
-                DateOfReturn.Attributes["min"] = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
-
-
                 Connection.Close();
                 Connection = Helpers.Database.Connect();
                 string transactionsActiveQuery = "SELECT count(*) FROM transactions_tbl WHERE state='BORROWED' AND book_id=" + Book["id"];
@@ -56,36 +50,6 @@ namespace LibraryWebApp
                 Connection.Close();
 
             }
-        }
-
-        protected void CreateTransaction_Click(object sender, EventArgs e)
-        {
-            string returnCode = RandomDigits(6);
-            string query =
-                    "INSERT INTO transactions_tbl (" +
-                    "created_by," +
-                    "book_id," +
-                    "date_of_return," +
-                    "return_code" +
-                    ") VALUES (" +
-                    "'" + user["id"] + "'," +
-                    "'" + Request.QueryString["id"] + "'," +
-                    "'" + Convert.ToDateTime(DateOfReturn.Text).ToString("yyyy-MM-dd HH:mm:ss")+ "'," +
-                    ""+ returnCode + "" +
-                    ");";
-            MySqlConnection Connection = Helpers.Database.Connect();
-            MySqlCommand cmd = new MySqlCommand(query, Connection);
-
-            cmd.ExecuteNonQuery();
-            HttpContext.Current.Response.Redirect("~/UserTransactions");
-        }
-        public string RandomDigits(int length)
-        {
-            var random = new Random();
-            string s = string.Empty;
-            for (int i = 0; i < length; i++)
-                s = String.Concat(s, random.Next(10).ToString());
-            return s;
         }
     }
 }

@@ -39,33 +39,6 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="<%=homeHREF %>">Library System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-            <%if (UserFullName.Text.Length > 0)
-                { %>
-                 <div class="dropdown mr-md-5">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <asp:Label runat="server" ID="UserFullName" CssClass="text-light"/>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/AccountSettings">Account Settings</a>
-                    <asp:Button runat="server" class="dropdown-item" OnClick="Logout" Text="Logout" UseSubmitBehaviour="false" type="button"/>
-                  </div>
-                </div>
-            <%}
-                else
-                { %>
-                <div class="btn btn-outline-primary ml-auto">
-                    <a href="Default.aspx">Not logged in</a>
-                </div>
-                <%} %>
-        </nav>
         <div >
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

@@ -127,8 +127,11 @@
     <Content Include="About.aspx" />
     <Content Include="AccountSettings.aspx" />
     <Content Include="AdminAddBook.aspx" />
+    <Content Include="AdminUserBorrowBook.aspx" />
     <Content Include="AdminBooks.aspx" />
     <Content Include="AdminBookViewer.aspx" />
+    <Content Include="AdminDeleteUserLogic.aspx" />
+    <Content Include="AdminUsers.aspx" />
     <Content Include="AdminDashboard.aspx" />
     <Content Include="AdminLoginForm.aspx" />
     <Content Include="AdminPenalties.aspx" />
@@ -146,7 +149,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
-    <Content Include="RegisterForm.aspx" />
+    <Content Include="AdminUserForm.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -275,6 +278,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="UserBooks.aspx" />
+    <Content Include="AdminBorrowBookForm.aspx" />
     <Content Include="UserBookViewer.aspx" />
     <Content Include="UserDashboard.aspx" />
     <Content Include="UserLoginForm.aspx" />
@@ -305,6 +309,13 @@
     <Compile Include="AdminAddBook.aspx.designer.cs">
       <DependentUpon>AdminAddBook.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminUserBorrowBook.aspx.cs">
+      <DependentUpon>AdminUserBorrowBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUserBorrowBook.aspx.designer.cs">
+      <DependentUpon>AdminUserBorrowBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminBooks.aspx.cs">
       <DependentUpon>AdminBooks.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -318,6 +329,20 @@
     </Compile>
     <Compile Include="AdminBookViewer.aspx.designer.cs">
       <DependentUpon>AdminBookViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDeleteUserLogic.aspx.cs">
+      <DependentUpon>AdminDeleteUserLogic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDeleteUserLogic.aspx.designer.cs">
+      <DependentUpon>AdminDeleteUserLogic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUsers.aspx.cs">
+      <DependentUpon>AdminUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUsers.aspx.designer.cs">
+      <DependentUpon>AdminUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminDashboard.aspx.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
@@ -365,12 +390,12 @@
     <Compile Include="Helpers\Upload.cs" />
     <Compile Include="Helpers\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterForm.aspx.cs">
-      <DependentUpon>RegisterForm.aspx</DependentUpon>
+    <Compile Include="AdminUserForm.aspx.cs">
+      <DependentUpon>AdminUserForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegisterForm.aspx.designer.cs">
-      <DependentUpon>RegisterForm.aspx</DependentUpon>
+    <Compile Include="AdminUserForm.aspx.designer.cs">
+      <DependentUpon>AdminUserForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteNoNav.Master.cs">
       <DependentUpon>SiteNoNav.Master</DependentUpon>
@@ -392,6 +417,13 @@
     </Compile>
     <Compile Include="UserBooks.aspx.designer.cs">
       <DependentUpon>UserBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBorrowBookForm.aspx.cs">
+      <DependentUpon>AdminBorrowBookForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminBorrowBookForm.aspx.designer.cs">
+      <DependentUpon>AdminBorrowBookForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserBookViewer.aspx.cs">
       <DependentUpon>UserBookViewer.aspx</DependentUpon>

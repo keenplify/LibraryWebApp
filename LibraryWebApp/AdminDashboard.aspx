@@ -28,6 +28,12 @@
                             Penalties
                         </a>
                     </li>
+                    <li>
+                        <a href="/AdminUsers">
+                            <i data-feather="users"></i>
+                            Users
+                        </a>
+                    </li>
                 </ul>
             </nav>
 

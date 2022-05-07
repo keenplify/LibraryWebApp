@@ -49,7 +49,7 @@ namespace LibraryWebApp.Helpers
             }
         }
 
-        public static void Register(string firstName, string lastName, string birthday, string email, string gender, string section, string address, string phoneNumber, string guardianPhoneNumber, string schoolIdImageLocation, string password, string type = "USER")
+        public static void Register(string firstName, string lastName, string birthday, string email, string gender, string Strand, string address, string phoneNumber, string guardianPhoneNumber, string schoolIdImageLocation, string password, string type = "USER", bool redirect = true)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace LibraryWebApp.Helpers
                     "birthday," +
                     "email," +
                     "gender," +
-                    "section," +
+                    "strand," +
                     "address," +
                     "phone_number," +
                     "guardian_phone_number," +
@@ -74,7 +74,7 @@ namespace LibraryWebApp.Helpers
                     "'" + birthday + "'," +
                     "'" + email + "'," +
                     "'" + gender + "'," +
-                    "'" + section + "'," +
+                    "'" + Strand + "'," +
                     "'" + address + "'," +
                     "'" + phoneNumber + "'," +
                     "'" + guardianPhoneNumber + "'," +
@@ -86,7 +86,8 @@ namespace LibraryWebApp.Helpers
                 MySqlCommand cmd = new MySqlCommand(query, Connection);
 
                 cmd.ExecuteNonQuery();
-                HttpContext.Current.Response.Redirect("~/UserLoginForm");
+                
+                if (redirect) HttpContext.Current.Response.Redirect("~/UserLoginForm"); 
             }
             catch
             {
@@ -129,7 +130,7 @@ namespace LibraryWebApp.Helpers
                         else HttpContext.Current.Response.Redirect("~/UserDashboard");
                     }
                 }
-                catch (InvalidOperationException e)
+                catch (InvalidOperationException)
                 {
                     if (redirect) LogoutLogic(false);
                     return null;

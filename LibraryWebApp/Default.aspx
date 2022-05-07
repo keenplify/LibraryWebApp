@@ -3,11 +3,33 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 50px)">
-        <div class="d-flex flex-column">
-            <h1>Welcome to Library System!</h1>
-            <a runat="server" class="btn btn-primary mb-2" href="AdminLoginForm.aspx">Login as Admin</a>
-            <a runat="server" class="btn btn-secondary mb-2" href="UserLoginForm.aspx">Login as User</a>
-            <a runat="server" class="btn btn-info mb-2" href="RegisterForm.aspx">Register</a>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h1>Login</h1>
+            <div class="mb-3">
+                <div class="input-group d-flex justify-content-center">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i data-feather="mail"></i></span>
+                    </div>
+                    <asp:TextBox runat="server" type="email" ID="email" class="form-control" placeholder="Email" />
+                </div>
+               <%if (EmailErrorLabel.Text.Length > 0)
+                    {%>
+                <small class="form-text text-danger"><asp:Label runat="server" ID="EmailErrorLabel"/></small>
+                <%}%>
+            </div>
+            <div class="mb-3">
+                <div class="input-group d-flex justify-content-center">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i data-feather="key"></i></span>
+                    </div>
+                    <asp:TextBox runat="server" type="password" ID="password" class="form-control" placeholder="Password" />
+                </div>
+                <%if (PasswordErrorLabel.Text.Length > 0)
+                    {%>
+                <small class="form-text text-danger"><asp:Label runat="server" ID="PasswordErrorLabel"/></small>
+                <%}%>
+            </div>
+            <asp:Button runat="server" text="Login" CssClass="btn btn-primary w-100" OnClick="Login"/>
         </div>
     </div>
 

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using MySql.Data.MySqlClient;
-using System.Diagnostics;
-using BCrypt.Net;
+using System.Text.RegularExpressions;
 
 namespace LibraryWebApp
 {
@@ -14,6 +8,34 @@ namespace LibraryWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Helpers.User.AutomaticLoginUserLogic("", true);
+        }
+
+        protected void Login(object sender, EventArgs e)
+        {
+            if (email.Text.Length <= 0 || !new Regex("^\\S+@\\S+\\.\\S+$").IsMatch(email.Text))
+            {
+                EmailErrorLabel.Text = "Invalid email. Please try again.";
+                PasswordErrorLabel.Text = "";
+                return;
+            }
+
+            try
+            {
+                var reader = Helpers.User.LoginLogic(email.Text, password.Text, true);
+
+                if (reader == null)
+                {
+                    EmailErrorLabel.Text = "";
+                    PasswordErrorLabel.Text = "Invalid password. Please try again.";
+                    return;
+                }
+            }
+            catch (InvalidOperationException error)
+            {
+                EmailErrorLabel.Text = "";
+                PasswordErrorLabel.Text = error.Message;
+            }
         }
     }
 }

@@ -11,8 +11,17 @@ namespace LibraryWebApp
 {
 
 
-    public partial class RegisterForm
+    public partial class AdminUserForm
     {
+
+        /// <summary>
+        /// FormType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FormType;
 
         /// <summary>
         /// ErrorStr control.
@@ -51,13 +60,13 @@ namespace LibraryWebApp
         protected global::System.Web.UI.WebControls.TextBox Birthday;
 
         /// <summary>
-        /// Section control.
+        /// Strand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Section;
+        protected global::System.Web.UI.WebControls.TextBox Strand;
 
         /// <summary>
         /// Address control.
@@ -121,5 +130,14 @@ namespace LibraryWebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload SchoolIdImage;
+
+        /// <summary>
+        /// SubmitBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SubmitBtn;
     }
 }

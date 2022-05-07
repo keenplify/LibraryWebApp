@@ -284,3 +284,8 @@ a.article, a.article:hover {
 .transaction-cover-td {
     width: 128px;
 }
+
+.feather {
+    width: 1em;
+    height: 1em;
+}

@@ -22,7 +22,7 @@ namespace LibraryWebApp
                 FirstName.Text = user["first_name"].ToString();
                 LastName.Text = user["last_name"].ToString();
                 Birthday.Text = Convert.ToDateTime(user["birthday"]).ToString("yyyy-MM-dd");
-                Section.Text = user["section"].ToString();
+                Strand.Text = user["strand"].ToString();
                 Address.Text = user["address"].ToString();
                 PhoneNumber.Text = user["phone_number"].ToString();
                 email.Text = user["email"].ToString();
@@ -41,7 +41,7 @@ namespace LibraryWebApp
                 "birthday='" + Birthday.Text + "', " +
                 "email='" + email.Text + "', " +
                 "gender='" + Gender.Text + "', " +
-                "section='" + Section.Text + "', " +
+                "strand='" + Strand.Text + "', " +
                 "address='" + Address.Text + "', " +
                 "phone_number='" + PhoneNumber.Text + "', " +
                 "guardian_phone_number='" + GuardianPhoneNumber.Text + "' " +

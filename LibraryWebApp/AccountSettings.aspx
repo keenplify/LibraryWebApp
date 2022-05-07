@@ -46,12 +46,12 @@
                                         </div>
                                     </div>
                                     <div class="mb-2">
-                                        <span class="font-weight-bold form-label">Section:</span>
+                                        <span class="font-weight-bold form-label">Strand:</span>
                                         <div class="input-group d-flex justify-content-center">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i data-feather="info"></i></span>
                                             </div>
-                                            <asp:TextBox runat="server" type="text" ID="Section" class="form-control" placeholder="Section" required="true" ToolTip="Section"/>
+                                            <asp:TextBox runat="server" type="text" ID="Strand" class="form-control" placeholder="Strand" required="true" ToolTip="Strand"/>
                                         </div>
                                     </div>
                                     <div class="mb-2">

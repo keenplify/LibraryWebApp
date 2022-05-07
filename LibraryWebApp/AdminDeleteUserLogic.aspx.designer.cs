@@ -11,7 +11,7 @@ namespace LibraryWebApp
 {
 
 
-    public partial class UserBookViewer
+    public partial class AdminDeleteUserLogic
     {
     }
 }

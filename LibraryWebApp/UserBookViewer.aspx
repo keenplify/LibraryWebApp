@@ -54,32 +54,7 @@
                             </div>
                         </div>
                         <div class="col-md-offset-1 col-md-6">
-                            <asp:Panel ID="pnlCreateTransaction" runat="server" DefaultButton="CreateTransaction">
-                                <h3 class="font-weight-bold">Borrow this Book</h3>
-                                <% if (Convert.ToInt32(Book["availableStocks"]) <= 0)
-                                    { %>
-                                <div class="alert alert-danger" role="alert">
-                                    <h4 class="alert-heading">Not enough stock!</h4>
-                                    <p>This book is unavailable for borrowing.</p>
-                                </div>
-                                <%}
-                                    else
-                                    {%>
-                                <div class="alert alert-info" role="alert">
-                                    <h4 class="alert-heading">Additional Information</h4>
-                                    <p>You can only borrow a book for less than 7 days. If you didn't return the book in the date that you have chosen, you will get a <a href="UserPenalties" class="alert-link">penalty</a>.</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 my-2">
-                                        <label for="DateOfReturn" class="form-label">Date Of Return
-                                        </label>
-                                        <asp:TextBox runat="server" type="date" ID="DateOfReturn" class="form-control" placeholder="Date of Return" required="true" ToolTip="Date of Return"/>
-                                    </div>
-                                </div>
-                                <asp:Button ID="CreateTransaction" type="submit" runat="server" class="btn btn-success w-50" Text="Borrow Book" OnClick="CreateTransaction_Click" />
-                                <%} %>
-                                
-                            </asp:Panel>
+                            
                         </div>
                     </div>
                 </div>

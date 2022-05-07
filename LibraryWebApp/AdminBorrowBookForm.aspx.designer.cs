@@ -11,43 +11,34 @@ namespace LibraryWebApp
 {
 
 
-    public partial class _Default
+    public partial class AdminBorrowBookForm
     {
 
         /// <summary>
-        /// email control.
+        /// pnlCreateTransaction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox email;
+        protected global::System.Web.UI.WebControls.Panel pnlCreateTransaction;
 
         /// <summary>
-        /// EmailErrorLabel control.
+        /// DateOfReturn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EmailErrorLabel;
+        protected global::System.Web.UI.WebControls.TextBox DateOfReturn;
 
         /// <summary>
-        /// password control.
+        /// CreateTransaction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
-
-        /// <summary>
-        /// PasswordErrorLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PasswordErrorLabel;
+        protected global::System.Web.UI.WebControls.Button CreateTransaction;
     }
 }
