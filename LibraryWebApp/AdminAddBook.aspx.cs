@@ -32,14 +32,24 @@ namespace LibraryWebApp
                     "publisher," +
                     "author," +
                     "stock," +
-                    "cover_image_location" +
+                    "cover_image_location," +
+                    "isbn," +
+                    "publisher_id," +
+                    "pages," +
+                    "book_type," +
+                    "publishing_date" +
                     ") VALUES (" +
                     "'" + user["id"] + "'," +
                     "'" + BookTitle.Text + "'," +
                     "'" + Publisher.Text + "'," +
                     "'" + Author.Text + "'," +
                     "'" + Stock.Text + "'," +
-                    "'" + path.Replace(@"\", @"\\") + "'" +
+                    "'" + path.Replace(@"\", @"\\") + "'," +
+                    $"'{ISBN.Text}'," +
+                    $"'{PublisherID.Text}'," +
+                    $"'{Pages.Text}'," +
+                    $"'{BookType.Text}'," +
+                    $"'{PublishingDate.Text}'" +
                     ");";
 
             MySqlConnection Connection = Helpers.Database.Connect();

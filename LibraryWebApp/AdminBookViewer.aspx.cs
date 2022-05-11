@@ -46,9 +46,8 @@ namespace LibraryWebApp
                 Pages.Text = Book["pages"].GetType().ToString() == "System.DBNull" ? "0" : Book["pages"].ToString();
                 BookType.Text = Book["book_type"].ToString();
                 PublishingDate.Text = Book["publishing_date"].ToString();
-
+                StockModTbx.Text = "1";
             }
-            StockModTbx.Text = "1";
         }
 
         protected void Update_Book(object sender, EventArgs e)

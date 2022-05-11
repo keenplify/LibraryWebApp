@@ -95,8 +95,8 @@
                                         <asp:Panel runat="server" ID="ModifyStockPnl">
                                             <div class="font-weight-bold text-center">Modify Stock</div>
                                             <asp:RadioButtonList runat="server" ID="StockMode" RepeatLayout="Flow" CssClass="btn-group colors w-100" data-toggle="buttons">
-                                                <asp:ListItem Text="Add" Value="+" class="btn btn-primary active" Selected="True"/>
-                                                <asp:ListItem Text="Remove" Value="-" class="btn btn-primary"/>
+                                                <asp:ListItem Text="Add" Value="+" class="btn btn-success active" Selected="True"/>
+                                                <asp:ListItem Text="Remove" Value="-" class="btn btn-danger"/>
                                             </asp:RadioButtonList>
                                             <asp:TextBox runat="server" ID="StockModTbx" type="number" class="form-control disabled my-1" min="0" title="Stock" required="true"/>
                                             <asp:Button ID="UpdateStockBtn" type="submit" runat="server" class="btn btn-success w-100" Text="Update Stock" OnClick="UpdateStockBtn_Click" />
