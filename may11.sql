@@ -13,100 +13,86 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for learning_application_db
-CREATE DATABASE IF NOT EXISTS `learning_application_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `learning_application_db`;
+-- Dumping database structure for library_db
+CREATE DATABASE IF NOT EXISTS `library_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `library_db`;
 
--- Dumping structure for table learning_application_db.quizzes_tbl
-CREATE TABLE IF NOT EXISTS `quizzes_tbl` (
-  `quiz_uuid` varchar(36) NOT NULL DEFAULT uuid(),
+-- Dumping structure for table library_db.books_tbl
+CREATE TABLE IF NOT EXISTS `books_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_by` bigint(20) NOT NULL DEFAULT 0,
   `title` varchar(50) NOT NULL,
-  `topic_uuid` varchar(36) NOT NULL,
-  PRIMARY KEY (`quiz_uuid`),
-  KEY `TOPICFK` (`topic_uuid`),
-  CONSTRAINT `TOPICFK` FOREIGN KEY (`topic_uuid`) REFERENCES `topics_tbl` (`topic_uuid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `publisher` varchar(255) NOT NULL DEFAULT '0',
+  `author` varchar(255) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `cover_image_location` varchar(255) NOT NULL,
+  `isbn` varchar(64) DEFAULT '',
+  `publisher_id` varchar(64) DEFAULT '',
+  `pages` int(11) DEFAULT 0,
+  `book_type` varchar(50) DEFAULT '',
+  `publishing_date` varchar(50) DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `Book_Created_By_FK` (`created_by`),
+  CONSTRAINT `Book_Created_By_FK` FOREIGN KEY (`created_by`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table learning_application_db.quiz_choices_tbl
-CREATE TABLE IF NOT EXISTS `quiz_choices_tbl` (
-  `quiz_choices_uuid` varchar(36) NOT NULL DEFAULT uuid(),
-  `text` longtext DEFAULT NULL,
-  `quiz_question_uuid` varchar(36) DEFAULT NULL,
-  `is_right` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`quiz_choices_uuid`) USING BTREE,
-  KEY `QUIZ_QUESTIONFK` (`quiz_question_uuid`),
-  CONSTRAINT `QUIZ_QUESTIONFK` FOREIGN KEY (`quiz_question_uuid`) REFERENCES `quiz_questions_tbl` (`quiz_question_uuid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Dumping structure for table library_db.penalties_tbl
+CREATE TABLE IF NOT EXISTS `penalties_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_by` bigint(20) DEFAULT NULL,
+  `description` varchar(128) NOT NULL,
+  `punished_id` bigint(20) NOT NULL DEFAULT 0,
+  `punisher_id` bigint(20) NOT NULL,
+  `is_resolved` tinyint(1) NOT NULL DEFAULT 0,
+  `remarks` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Penalty_Created_By_FK` (`created_by`),
+  KEY `Penalty_Punished_FK` (`punished_id`),
+  KEY `Penalty_Punisher_FK` (`punisher_id`),
+  CONSTRAINT `Penalty_Created_By_FK` FOREIGN KEY (`created_by`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Penalty_Punished_FK` FOREIGN KEY (`punished_id`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Penalty_Punisher_FK` FOREIGN KEY (`punisher_id`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table learning_application_db.quiz_questions_tbl
-CREATE TABLE IF NOT EXISTS `quiz_questions_tbl` (
-  `quiz_question_uuid` varchar(36) NOT NULL DEFAULT uuid(),
-  `text` longtext NOT NULL,
-  `quiz_uuid` varchar(36) NOT NULL,
-  PRIMARY KEY (`quiz_question_uuid`),
-  KEY `QUIZFK` (`quiz_uuid`),
-  CONSTRAINT `QUIZFK` FOREIGN KEY (`quiz_uuid`) REFERENCES `quizzes_tbl` (`quiz_uuid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Dumping structure for table library_db.transactions_tbl
+CREATE TABLE IF NOT EXISTS `transactions_tbl` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `created_by` bigint(20) NOT NULL,
+  `date_borrowed` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `state` enum('RETURNED','BORROWED') NOT NULL DEFAULT 'BORROWED',
+  `book_id` bigint(20) NOT NULL,
+  `date_of_return` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `return_code` varchar(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Book_FK` (`book_id`),
+  KEY `Transaction_Created_By_FK` (`created_by`),
+  CONSTRAINT `Book_FK` FOREIGN KEY (`book_id`) REFERENCES `books_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Transaction_Created_By_FK` FOREIGN KEY (`created_by`) REFERENCES `users_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table learning_application_db.quiz_results_tbl
-CREATE TABLE IF NOT EXISTS `quiz_results_tbl` (
-  `quiz_result_uuid` varchar(36) NOT NULL DEFAULT uuid(),
-  `total_score` int(11) NOT NULL DEFAULT 0,
-  `max_score` int(11) NOT NULL,
-  `user_uuid` varchar(36) NOT NULL,
-  `quiz_uuid` varchar(36) NOT NULL,
-  PRIMARY KEY (`quiz_result_uuid`),
-  KEY `QUIZTAKERFK` (`user_uuid`),
-  KEY `QUIZTAKENFK` (`quiz_uuid`),
-  CONSTRAINT `QUIZTAKENFK` FOREIGN KEY (`quiz_uuid`) REFERENCES `quizzes_tbl` (`quiz_uuid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `QUIZTAKERFK` FOREIGN KEY (`user_uuid`) REFERENCES `users_tbl` (`user_uuid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
--- Dumping structure for table learning_application_db.subjects_tbl
-CREATE TABLE IF NOT EXISTS `subjects_tbl` (
-  `subject_uuid` varchar(36) NOT NULL DEFAULT uuid(),
-  `title` varchar(512) NOT NULL,
-  `logo_src` varchar(512) DEFAULT NULL,
-  `description` longtext NOT NULL,
-  PRIMARY KEY (`subject_uuid`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
--- Dumping structure for table learning_application_db.topics_tbl
-CREATE TABLE IF NOT EXISTS `topics_tbl` (
-  `topic_uuid` varchar(36) NOT NULL DEFAULT uuid(),
-  `title` varchar(128) NOT NULL,
-  `description` longtext NOT NULL,
-  `logo_src` varchar(1024) DEFAULT NULL,
-  `subject_uuid` varchar(36) DEFAULT NULL,
-  PRIMARY KEY (`topic_uuid`),
-  KEY `SUBJECTFK` (`subject_uuid`),
-  CONSTRAINT `SUBJECTFK` FOREIGN KEY (`subject_uuid`) REFERENCES `subjects_tbl` (`subject_uuid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
--- Dumping structure for table learning_application_db.users_tbl
+-- Dumping structure for table library_db.users_tbl
 CREATE TABLE IF NOT EXISTS `users_tbl` (
-  `user_uuid` varchar(36) NOT NULL DEFAULT uuid(),
-  `full_name` varchar(128) NOT NULL,
-  `username` varchar(64) NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`user_uuid`) USING BTREE,
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `birthday` date NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `type` enum('ADMIN','USER') NOT NULL DEFAULT 'USER',
+  `gender` enum('MALE','FEMALE') NOT NULL,
+  `strand` varchar(50) DEFAULT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone_number` varchar(50) NOT NULL,
+  `guardian_phone_number` varchar(50) DEFAULT NULL,
+  `school_id_image_location` varchar(255) DEFAULT NULL,
+  `password` varchar(72) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
